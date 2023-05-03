@@ -11,6 +11,19 @@ from data_structures.linkedlist import LinkedList, Node
 import pytest
 
 
+@pytest.fixture
+def sample_ll():
+    ll = LinkedList()
+    ll.append(10)
+    ll.append(2)
+    ll.append(4)
+    ll.append(7)
+    ll.append(1)
+    ll.append(0)
+    ll.append(5)
+    return ll
+
+
 @pytest.mark.ll
 class TestLinkedList:
     def test_constructor(self):
@@ -77,11 +90,16 @@ class TestLinkedList:
         # Reverse a sublist within the linked list
         ll0.reverse_between(2, 4)
         assert str(ll0) == "1-2-5-4-3"
-        
+
         ll1 = LinkedList()
         ll1.append(1)
         ll1.append(2)
         ll1.append(3)
         ll1.append(4)
         ll1.append(5)
-        ll1.reverse_between(0, 3) == '4-3-2-1-5'
+        ll1.reverse_between(0, 3) == "4-3-2-1-5"
+
+    def test_partition_list(self, sample_ll):
+        ll0 = sample_ll
+        ll0.partition_list(5)
+        assert str(ll0) == "2-4-1-0-10-7-5"

@@ -14,11 +14,11 @@ class LinkedList:
 
     def __str__(self) -> str:
         temp = self.head
-        node_values = []
+        values = []
         while temp:
-            node_values += str(temp.value)
+            values.append(str(temp.value))
             temp = temp.next
-        return "-".join(node_values)
+        return "-".join(values)
 
     def append(self, value):
         new_node = Node(value)
@@ -127,3 +127,44 @@ class LinkedList:
             prev.next = temp
 
         self.head = dummy.next
+
+    def partition_list(self, x: int) -> None:
+        """
+        #### !!! INTERVIEW QUESTION !!! ####
+        Partition the linked list based on a value X
+        Nodes that have value less than X will come before Nodes that have value equal or greater than X
+
+        #### ? CONSTRAINTS ? ####
+        Preserve the origin relative order of the nodes in each of the two partitions
+
+        #### * INPUTS * ####
+        x: the value that will partition on
+
+        Returns:
+            Optional[Node]: returns None if the list is empty. Otherwise, partition the list
+        """
+        if self.head is None:
+            return None
+
+        # Create dummy node
+        small = Node(0)
+        big = Node(0)
+        s_tmp = small
+        b_tmp = big
+
+        # Set current to linked list head
+        current = self.head
+        while current:
+            if current.value < x:
+                s_tmp.next = current
+                s_tmp = current
+            else:
+                b_tmp.next = current
+                b_tmp = current
+            current = current.next
+
+        # Terminate the big list
+        b_tmp.next = None
+
+        s_tmp.next = big.next
+        self.head = small.next
