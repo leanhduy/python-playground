@@ -91,3 +91,39 @@ class LinkedList:
             slow = slow.next
             fast = fast.next
         return slow
+
+    def reverse_between(self, m, n):
+        """
+        #### !!! INTERVIEW QUESTION !!! ####
+        Reverse the node of the linked list from node m-th to n-th
+
+        #### ? CONSTRAINTS ? ####
+        m & n are valid
+        m < n
+
+        #### * INPUTS * ####
+        m - int: the 0-based index of the m-th node
+        n - int: the 0-based index of the n-th node
+
+        Returns:
+            Optional[Node]: returns None if the list is empty. Otherwise, reverse the nodes from m-th to n-th
+        """
+        if self.head is None:
+            return None
+
+        # This node is for the case of m-th = 0 (Head node is also reversed)
+        dummy = Node(0)
+        dummy.next = self.head
+        prev = dummy
+
+        for _ in range(m):
+            prev = prev.next
+        current = prev.next
+
+        for _ in range(n - m):
+            temp = current.next
+            current.next = temp.next
+            temp.next = prev.next
+            prev.next = temp
+
+        self.head = dummy.next

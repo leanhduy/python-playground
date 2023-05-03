@@ -65,3 +65,23 @@ class TestLinkedList:
         result = my_linked_list.find_kth_from_end(k)
 
         assert result.value == 4
+
+    def test_reverse_between(self):
+        ll0 = LinkedList()
+        ll0.append(1)
+        ll0.append(2)
+        ll0.append(3)
+        ll0.append(4)
+        ll0.append(5)
+
+        # Reverse a sublist within the linked list
+        ll0.reverse_between(2, 4)
+        assert str(ll0) == "1-2-5-4-3"
+        
+        ll1 = LinkedList()
+        ll1.append(1)
+        ll1.append(2)
+        ll1.append(3)
+        ll1.append(4)
+        ll1.append(5)
+        ll1.reverse_between(0, 3) == '4-3-2-1-5'
