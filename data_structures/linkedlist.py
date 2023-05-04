@@ -168,3 +168,65 @@ class LinkedList:
 
         s_tmp.next = big.next
         self.head = small.next
+
+    def remove_duplicates_with_set(self):
+        """
+        #### !!! INTERVIEW QUESTION !!! ####
+        Remove all duplicates in the linked list
+        This approach contains 2 pointers and a set
+        Time Complexity: O(n) with n is the number of nodes in the list
+
+        #### ? CONSTRAINTS ? ####
+        Preserve the origin relative order of the nodes
+
+        """
+        # Initialize an empty set
+        myset = set()
+
+        # Init 2 pointers: prev and cur
+        prev = None
+        current = self.head
+
+        # Iterate through the list
+        while current:
+            # If value in the set, remove the duplicate
+            if current.value in myset:
+                prev.next = current.next
+                self.length -= 1
+            # Otherwise add the value to the set, jumpt to next node
+            else:
+                myset.add(current.value)
+                prev = current
+            current = current.next
+
+    def remove_duplicates_without_set(self):
+        """
+        #### !!! INTERVIEW QUESTION !!! ####
+        Remove all duplicates in the linked list
+        This approach doesn't use the built-in Set data type
+
+
+        #### ? CONSTRAINTS ? ####
+        Preserve the origin relative order of the nodes
+
+        #### * APPROACH EXPLANATION * ####
+        We will use 3 pointers: prev, temp, curr
+        Time complexity: O(n^2)
+
+        This is the "naive" approach. And will not be preferred in interview
+        """
+        if self.length <= 1:
+            return
+        curr = self.head
+        while curr is not None:
+            prev = curr
+            temp = prev.next
+            while temp is not None:
+                # If duplicates is found. Remove the node and decrese the linked list length
+                if temp.value == curr.value:
+                    prev.next = temp.next
+                    self.length -= 1
+                else:
+                    prev = prev.next
+                temp = temp.next
+            curr = curr.next

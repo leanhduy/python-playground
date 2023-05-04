@@ -103,3 +103,39 @@ class TestLinkedList:
         ll0 = sample_ll
         ll0.partition_list(5)
         assert str(ll0) == "2-4-1-0-10-7-5"
+
+    def test_remove_duplicates_with_set(self):
+        ll0 = LinkedList()
+        ll0.append(1)
+        ll0.append(2)
+        ll0.append(3)
+        ll0.append(1)
+        ll0.append(4)
+        ll0.append(2)
+        ll0.append(5)
+        ll0.remove_duplicates()
+        assert str(ll0) == "1-2-3-4-5"
+
+    def test_remove_duplicates_with_set(self):
+        ll0 = LinkedList()
+        ll0.append(1)
+        ll0.append(2)
+        ll0.append(3)
+        ll0.append(1)
+        ll0.append(4)
+        ll0.append(2)
+        ll0.append(5)
+        ll0.remove_duplicates_with_set()
+        assert str(ll0) == "1-2-3-4-5"
+
+    def test_remove_duplicates_without_set(self):
+        ll0 = LinkedList()
+        ll0.append(1)
+        ll0.append(2)
+        ll0.append(3)
+        ll0.append(1)
+        ll0.append(4)
+        ll0.append(2)
+        ll0.append(5)
+        ll0.remove_duplicates_without_set()
+        assert str(ll0) == "1-2-3-4-5"
