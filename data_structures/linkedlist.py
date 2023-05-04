@@ -230,3 +230,27 @@ class LinkedList:
                     prev = prev.next
                 temp = temp.next
             curr = curr.next
+
+    def reverse(self):
+        """
+        #### !!! INTERVIEW QUESTION !!! ####
+        Reverse the whole linked list
+
+        #### * APPROACH EXPLANATION * ####
+        We will use 3 pointers: before, temp, after
+        Time complexity: O(n)
+        """
+        if self.length > 1:
+            # Swap the head and tail pointer
+            temp = self.head
+            self.head = self.tail
+            self.tail = temp
+            # Swap the pointer next of all nodes
+            before = None
+            after = temp.next
+            while after:
+                temp.next = before
+                before = temp
+                temp = after
+                after = after.next
+            self.head.next = before

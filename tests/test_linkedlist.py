@@ -30,6 +30,16 @@ class TestLinkedList:
         ll = LinkedList()
         assert type(ll) is LinkedList
 
+    def test_reverse(self):
+        ll0 = LinkedList()
+        ll0.append(1)
+        ll0.append(2)
+        ll0.append(3)
+        ll0.append(4)
+        ll0.append(5)
+        ll0.reverse()
+        assert str(ll0) == "5-4-3-2-1"
+
     def test_find_middle_node(self):
         ll0 = LinkedList()
         assert ll0.find_middle_node() is None
@@ -74,10 +84,10 @@ class TestLinkedList:
         my_linked_list.append(4)
         my_linked_list.append(5)
 
-        k = 2
+        k = 5
         result = my_linked_list.find_kth_from_end(k)
 
-        assert result.value == 4
+        assert result.value == 1
 
     def test_reverse_between(self):
         ll0 = LinkedList()
