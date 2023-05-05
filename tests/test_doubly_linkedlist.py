@@ -141,7 +141,7 @@ class TestDoublyLinkedList:
         assert dll.head.value == 6
         assert dll.tail.value == 1
 
-    def test_check_palindrome(self, test_dll) -> bool:
+    def test_check_palindrome(self, test_dll):
         dll0 = DoublyLinkedList(1)
         dll0.clear()
         assert dll0.check_palindrome() == False
@@ -163,3 +163,16 @@ class TestDoublyLinkedList:
         dll4.append(2)
         dll4.append(3)
         assert dll4.check_palindrome() == False
+
+    def test_swap_pairs(self, test_dll):
+        dll0 = DoublyLinkedList(1)
+        dll0.swap_pairs()
+        assert str(dll0) == "1"
+
+        dll0.clear()
+        dll0.swap_pairs()
+        assert str(dll0) == ""
+
+        dll1 = test_dll
+        dll1.swap_pairs()
+        assert str(dll1) == "2 1 4 3 6 5"

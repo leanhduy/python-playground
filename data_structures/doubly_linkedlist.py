@@ -166,3 +166,19 @@ class DoublyLinkedList:
             t1 = t1.next
             t2 = t2.prev
         return True
+
+    def swap_pairs(self):
+        if self.length <= 1:
+            return
+        before = self.head
+        after = before.next
+        while after:
+            before.next = after.next
+            after.prev = before.prev
+            before.prev = after
+            after.next = before
+            before = before.next
+            if before:
+                after = before.next
+            else:
+                break
