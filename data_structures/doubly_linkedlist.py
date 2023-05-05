@@ -100,3 +100,27 @@ class DoublyLinkedList:
     def insert(self, index: int, value: int) -> bool:
         if index < 0 or index > self.length:
             return False
+        if index == 0:
+            return self.prepend(value)
+        if index == self.length:
+            return self.append(value)
+        else:
+            new_node = Node(value)
+            temp = self.get(index)
+            new_node.next = temp
+            new_node.prev = temp.prev
+            temp.prev = new_node
+            new_node.prev.next = new_node
+            self.length += 1
+
+    def swap_first_last(self):
+        """
+        ##### !!! INTERVIEW QUESTION !!! #####
+        Swap the values of the first and last node
+
+        ##### ? CONSTRAINTS ? #####
+        The pointers to the nodes themselves are not swapped - only the values are exchanged
+        """
+        if self.length <= 1:
+            return
+        self.head.value, self.tail.value = self.tail.value, self.head.value

@@ -38,10 +38,10 @@ class LinkedList:
 
     def find_middle_node(self) -> Optional[Node]:
         """
-        ### !!! INTERVIEW QUESTION !!! ###
+        ##### !!! INTERVIEW QUESTION !!! #####
         FIND THE MIDDLE NODE OF THE LINKED LIST
 
-        ### ? NOTE ? ###
+        ##### ? NOTE ? #####
         In the linked list with even number of nodes, return the first node of the second half of the linked list
         e.g. Linkedlist 1-2-3-4 's middle node would be 2
 
@@ -56,7 +56,7 @@ class LinkedList:
 
     def has_loop(self) -> bool:
         """
-        ### !!! INTERVIEW QUESTION !!! ###
+        ##### !!! INTERVIEW QUESTION !!! #####
         CHECK IF THE LINKED LIST CONTAINS A LOOP
 
         Returns:
@@ -73,7 +73,7 @@ class LinkedList:
 
     def find_kth_from_end(self, k):
         """
-        ### !!! INTERVIEW QUESTION !!! ###
+        ##### !!! INTERVIEW QUESTION !!! #####
         FIND THE K-TH NODE FROM THE END OF A LINKED LIST
 
         Returns:
@@ -94,14 +94,14 @@ class LinkedList:
 
     def reverse_between(self, m, n):
         """
-        #### !!! INTERVIEW QUESTION !!! ####
+        ##### !!! INTERVIEW QUESTION !!! #####
         Reverse the node of the linked list from node m-th to n-th
 
-        #### ? CONSTRAINTS ? ####
+        ##### ? CONSTRAINTS ? #####
         m & n are valid
         m < n
 
-        #### * INPUTS * ####
+        ##### * INPUTS * #####
         m - int: the 0-based index of the m-th node
         n - int: the 0-based index of the n-th node
 
@@ -130,14 +130,14 @@ class LinkedList:
 
     def partition_list(self, x: int) -> None:
         """
-        #### !!! INTERVIEW QUESTION !!! ####
+        ##### !!! INTERVIEW QUESTION !!! #####
         Partition the linked list based on a value X
         Nodes that have value less than X will come before Nodes that have value equal or greater than X
 
-        #### ? CONSTRAINTS ? ####
+        ##### ? CONSTRAINTS ? #####
         Preserve the origin relative order of the nodes in each of the two partitions
 
-        #### * INPUTS * ####
+        ##### * INPUTS * #####
         x: the value that will partition on
 
         Returns:
@@ -171,12 +171,12 @@ class LinkedList:
 
     def remove_duplicates_with_set(self):
         """
-        #### !!! INTERVIEW QUESTION !!! ####
+        ##### !!! INTERVIEW QUESTION !!! #####
         Remove all duplicates in the linked list
         This approach contains 2 pointers and a set
         Time Complexity: O(n) with n is the number of nodes in the list
 
-        #### ? CONSTRAINTS ? ####
+        ##### ? CONSTRAINTS ? #####
         Preserve the origin relative order of the nodes
 
         """
@@ -201,15 +201,15 @@ class LinkedList:
 
     def remove_duplicates_without_set(self):
         """
-        #### !!! INTERVIEW QUESTION !!! ####
+        ##### !!! INTERVIEW QUESTION !!! #####
         Remove all duplicates in the linked list
         This approach doesn't use the built-in Set data type
 
 
-        #### ? CONSTRAINTS ? ####
+        ##### ? CONSTRAINTS ? #####
         Preserve the origin relative order of the nodes
 
-        #### * APPROACH EXPLANATION * ####
+        ##### * APPROACH EXPLANATION * #####
         We will use 3 pointers: prev, temp, curr
         Time complexity: O(n^2)
 
@@ -233,16 +233,16 @@ class LinkedList:
 
     def reverse(self):
         """
-        #### !!! INTERVIEW QUESTION !!! ####
+        ##### !!! INTERVIEW QUESTION !!! #####
         Reverse the whole linked list
 
-        #### * APPROACH EXPLANATION * ####
+        ##### * APPROACH EXPLANATION * #####
         We will use 3 pointers: before, temp, after
         Time complexity: O(n)
         """
         if self.length > 1:
             # Swap the head and tail pointer
-            temp = self.head   
+            temp = self.head
             self.head = self.tail
             self.tail = temp
             # Swap the pointer next of all nodes
@@ -254,3 +254,5 @@ class LinkedList:
                 temp = after
                 after = after.next
             self.head.next = before
+
+    

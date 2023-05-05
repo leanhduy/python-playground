@@ -119,4 +119,17 @@ class TestDoublyLinkedList:
         assert dll.insert(0, 100) == True
         assert dll.length == 7
         assert str(dll) == "100 1 2 3 4 5 6"
-        
+
+    def test_swap_first_last(self, test_dll):
+        """
+        ##### !!! INTERVIEW QUESTION !!! #####
+        Swap the values of the first and last node
+
+        ##### ? CONSTRAINTS ? #####
+        The pointers to the nodes themselves are not swapped - only the values are exchanged
+        """
+        dll = test_dll
+        dll.swap_first_last()
+        assert dll.head.value == 6
+        assert dll.tail.value == 1
+        assert str(dll) == "6 2 3 4 5 1"
