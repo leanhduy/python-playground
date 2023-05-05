@@ -242,7 +242,7 @@ class LinkedList:
         """
         if self.length > 1:
             # Swap the head and tail pointer
-            temp = self.head
+            temp = self.head   
             self.head = self.tail
             self.tail = temp
             # Swap the pointer next of all nodes
