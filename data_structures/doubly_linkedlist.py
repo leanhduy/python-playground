@@ -124,3 +124,45 @@ class DoublyLinkedList:
         if self.length <= 1:
             return
         self.head.value, self.tail.value = self.tail.value, self.head.value
+
+    def reverse(self):
+        """
+        ##### !!! INTERVIEW QUESTION !!! #####
+        Reverse the doubly linked list
+
+        ##### ? CONSTRAINTS ? #####
+        Do not change the value of any of the nodes
+        Only change the pointer `prev` and `next` of each node
+        """
+        if self.length <= 1:
+            return
+        temp = self.head
+        while temp:
+            temp.prev, temp.next = temp.next, temp.prev
+            temp = temp.prev
+        # Update the head and tail pointer
+        self.head, self.tail = self.tail, self.head
+
+    def check_palindrome(self) -> bool:
+        """
+        ##### !!! INTERVIEW QUESTION !!! #####
+        Check if a doubly linked list is Palindromic
+
+        ##### ? CONSTRAINTS ? #####
+        The linked list with length <= 1 is always a palindrome
+        """
+        if self.length < 1:
+            return False
+        if self.length == 1:
+            return True
+        t1 = self.head
+        t2 = self.tail
+        while t1 != t2:
+            if t1.value != t2.value:
+                return False
+            # Check incase list contains even number of nodes
+            if t1.next == t2:
+                break
+            t1 = t1.next
+            t2 = t2.prev
+        return True

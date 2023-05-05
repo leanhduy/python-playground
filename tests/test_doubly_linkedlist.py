@@ -133,3 +133,33 @@ class TestDoublyLinkedList:
         assert dll.head.value == 6
         assert dll.tail.value == 1
         assert str(dll) == "6 2 3 4 5 1"
+
+    def test_reverse(self, test_dll):
+        dll = test_dll
+        dll.reverse()
+        assert str(dll) == "6 5 4 3 2 1"
+        assert dll.head.value == 6
+        assert dll.tail.value == 1
+
+    def test_check_palindrome(self, test_dll) -> bool:
+        dll0 = DoublyLinkedList(1)
+        dll0.clear()
+        assert dll0.check_palindrome() == False
+
+        dll1 = DoublyLinkedList(1)
+        assert dll1.check_palindrome() == True
+
+        dll2 = test_dll
+        assert dll2.check_palindrome() == False
+
+        dll3 = DoublyLinkedList(1)
+        dll3.append(2)
+        dll3.append(3)
+        dll3.append(2)
+        dll3.append(1)
+        assert dll3.check_palindrome() == True
+
+        dll4 = DoublyLinkedList(1)
+        dll4.append(2)
+        dll4.append(3)
+        assert dll4.check_palindrome() == False
