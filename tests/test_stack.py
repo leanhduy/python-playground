@@ -50,7 +50,7 @@ class TestStack:
         assert s.pop() is None
 
 
-@pytest.mark.s_others
+@pytest.mark.s_list
 class TestStackList:
     def test_constructor(self):
         s = StackList()
@@ -78,3 +78,22 @@ def test_is_balanced_parentheses():
     unbalanced_parentheses = "((())))"
     assert is_balanced_parentheses(balanced_parentheses) == True
     assert is_balanced_parentheses(unbalanced_parentheses) == False
+
+
+@pytest.mark.s_others
+def test_reverse_string():
+    msg = "hello"
+    assert reverse_string(msg) == "olleh"
+
+
+@pytest.mark.s_others
+def test_sort_stack_list():
+    s = StackList()
+    s.push(3)
+    s.push(1)
+    s.push(5)
+    s.push(4)
+    s.push(2)
+
+    sort_stack_list(s)
+    assert s.stack_list == [5, 4, 3, 2, 1]
