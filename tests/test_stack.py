@@ -48,3 +48,33 @@ class TestStack:
         assert s.pop().value == 1
         assert s.length == 0
         assert s.pop() is None
+
+
+@pytest.mark.s_others
+class TestStackList:
+    def test_constructor(self):
+        s = StackList()
+        assert type(s.stack_list) is list
+        assert len(s.stack_list) == 0
+
+    def test_push(self):
+        s = StackList()
+        s.push(1)
+        s.push(2)
+        assert len(s.stack_list) == 2
+
+    def test_pop(self):
+        s = StackList()
+        s.push(1)
+        s.push(2)
+        assert s.pop() == 2
+        assert s.pop() == 1
+        assert s.pop() is None
+
+
+@pytest.mark.s_others
+def test_is_balanced_parentheses():
+    balanced_parentheses = "((()))"
+    unbalanced_parentheses = "((())))"
+    assert is_balanced_parentheses(balanced_parentheses) == True
+    assert is_balanced_parentheses(unbalanced_parentheses) == False
