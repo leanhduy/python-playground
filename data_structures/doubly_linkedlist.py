@@ -168,17 +168,37 @@ class DoublyLinkedList:
         return True
 
     def swap_pairs(self):
-        if self.length <= 1:
-            return
-        before = self.head
-        after = before.next
-        while after:
-            before.next = after.next
-            after.prev = before.prev
-            before.prev = after
-            after.next = before
-            before = before.next
-            if before:
-                after = before.next
-            else:
-                break
+        dummy = Node(0)
+        dummy.next = self.head
+        prev = dummy
+
+        while self.head and self.head.next:
+            first = self.head
+            second = self.head.next
+
+            prev.next = second
+            first.next = second.next
+            second.next = first
+
+            second.prev = prev
+            first.prev = second
+            if first.next:
+                first.next.prev = first
+
+            self.head = first.next
+            prev = first
+
+        self.head = dummy.next
+        if self.head:
+            self.head.prev = None
+
+
+dll = DoublyLinkedList(1)
+dll.append(2)
+dll.append(3)
+dll.append(4)
+dll.append(5)
+
+print(dll)
+dll.swap_pairs()
+print(dll)

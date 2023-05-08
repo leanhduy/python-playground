@@ -6,7 +6,7 @@ BASE_DIR = os.path.abspath("")
 # Add the ROOT DIRECTORY into sys.path
 sys.path.insert(0, BASE_DIR)
 
-from data_structures.linkedlist import LinkedList, Node
+from data_structures.linkedlist import *
 
 import pytest
 
@@ -149,3 +149,37 @@ class TestLinkedList:
         ll0.append(5)
         ll0.remove_duplicates_without_set()
         assert str(ll0) == "1-2-3-4-5"
+
+
+@pytest.mark.ll_others
+def test_add_two_numbers():
+    ll1 = LinkedList()
+    ll1.append(2)
+    ll1.append(4)
+    ll1.append(3)
+
+    ll2 = LinkedList()
+    ll2.append(5)
+    ll2.append(6)
+    ll2.append(4)
+
+    ll3 = add_two_numbers(ll1, ll2)
+    assert str(ll3) == "7-0-8"
+
+    ll1 = LinkedList()
+    ll1.append(9)
+    ll1.append(9)
+    ll1.append(9)
+    ll1.append(9)
+    ll1.append(9)
+    ll1.append(9)
+    ll1.append(9)
+
+    ll2 = LinkedList()
+    ll2.append(9)
+    ll2.append(9)
+    ll2.append(9)
+    ll2.append(9)
+
+    ll3 = add_two_numbers(ll1, ll2)
+    assert str(ll3) == "8-9-9-9-0-0-0-1"

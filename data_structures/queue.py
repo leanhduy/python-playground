@@ -49,3 +49,43 @@ class Queue:
             temp.next = None
         self.length -= 1
         return temp
+
+
+class MyQueue:
+    """
+    This Queue data structure is implemented by using 2 stacks, each stack is a list
+    """
+
+    def __init__(self):
+        self.stack1 = []
+        self.stack2 = []
+
+    def peek(self):
+        return self.stack1[-1]
+
+    def is_empty(self):
+        return len(self.stack1) == 0
+
+    def enqueue(self, value):
+        """
+        #### ! INTERVIEW QUETSION ! ####
+        Implement the enqueue method for a Queue
+        You must use list only, linked list is now allowed
+        
+        #### ? BIG-O ? ####
+        Time complexity: O(n)
+        Space complexity: O(1)
+        """
+        # Flush out the stack1 into the stack2
+        while len(self.stack1) > 0:
+            self.stack2.append(self.stack1.pop())
+        # Add the new value to the top of stack1
+        self.stack1.append(value)
+        # Re-migrate the elements from stack2 to stack1
+        while len(self.stack2) > 0:
+            self.stack1.append(self.stack2.pop())
+            
+    def dequeue(self):
+        if len(self.stack1) == 0:
+            return None
+        return self.stack1.pop()

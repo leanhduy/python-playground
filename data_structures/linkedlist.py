@@ -24,8 +24,9 @@ class LinkedList:
         new_node = Node(value)
         if self.length == 0:
             self.head = self.tail = new_node
-        self.tail.next = new_node
-        self.tail = new_node
+        else:
+            self.tail.next = new_node
+            self.tail = new_node
         self.length += 1
 
     def prepend(self, value):
@@ -255,4 +256,50 @@ class LinkedList:
                 after = after.next
             self.head.next = before
 
-    
+
+##### * OTHER LINKED LIST PROBLEMS * (LeetCode) ####
+##### ! NOTE: Leetcode define the linked list as the head of the list, which is a node with `val` and `next` pointer ! #####
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
+def add_two_numbers(
+    self, l1: Optional[ListNode], l2: Optional[ListNode]
+) -> Optional[ListNode]:
+    buffer = 0
+    l3 = ListNode()
+    temp = l3
+    # Iterate until one number is exhausted
+    while l1 and l2:
+        if l1.val + l2.val + buffer < 10:
+            temp.next = ListNode(l1.val + l2.val + buffer)
+            buffer = 0
+        else:
+            temp.next = ListNode(l1.val + l2.val + buffer - 10)
+            buffer = 1
+        l1 = l1.next
+        l2 = l2.next
+        temp = temp.next
+    while l1:
+        if l1.val + buffer == 10:
+            temp.next = ListNode(0)
+            buffer = 1
+        else:
+            temp.next = ListNode(l1.val + buffer)
+            buffer = 0
+        l1 = l1.next
+        temp = temp.next
+    while l2:
+        if l2.val + buffer == 10:
+            temp.next = ListNode(0)
+            buffer = 1
+        else:
+            temp.next = ListNode(l2.val + buffer)
+            buffer = 0
+        l2 = l2.next
+        temp = temp.next
+    if buffer == 1:
+        temp.next = ListNode(1)
+    return l3.next
