@@ -1,7 +1,7 @@
 import os
 import sys
 
-os.system("cls")
+# os.system("clear") if os.name == "posix" else os.system("cls")
 sys.path.insert(0, os.path.abspath(""))
 
 import pytest

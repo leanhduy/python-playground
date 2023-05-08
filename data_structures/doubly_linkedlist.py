@@ -191,14 +191,3 @@ class DoublyLinkedList:
         self.head = dummy.next
         if self.head:
             self.head.prev = None
-
-
-dll = DoublyLinkedList(1)
-dll.append(2)
-dll.append(3)
-dll.append(4)
-dll.append(5)
-
-print(dll)
-dll.swap_pairs()
-print(dll)
