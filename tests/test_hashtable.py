@@ -64,3 +64,31 @@ def test_first_non_repeating_char():
     assert first_non_repeating_char("leetcode") == "l"
     assert first_non_repeating_char("hello") == "h"
     assert first_non_repeating_char("aabbcc") == None
+
+
+@pytest.mark.ht
+def test_group_anagrams():
+    assert group_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"]) == [
+        ["eat", "tea", "ate"],
+        ["tan", "nat"],
+        ["bat"],
+    ]
+    assert group_anagrams(["abc", "cba", "bac", "foo", "bar"]) == [
+        ["abc", "cba", "bac"],
+        ["foo"],
+        ["bar"],
+    ]
+    assert group_anagrams(
+        ["listen", "silent", "triangle", "integral", "garden", "ranged"]
+    ) == [["listen", "silent"], ["triangle", "integral"], ["garden", "ranged"]]
+
+
+@pytest.mark.ht
+def test_two_sum():
+    assert two_sum([], 0) == []
+    assert two_sum([2, 7, 11, 15], 9) == [0, 1]
+    assert two_sum([3, 2, 4], 6) == [1, 2]
+    assert two_sum([3, 3], 6) == [0, 1]
+    assert two_sum([1, 2, 3, 4, 5], 10) == []
+    assert two_sum([1, 2, 3, 4, 5], 7) == [2, 3]
+    assert two_sum([1, 2, 3, 4, 5], 3) == [0, 1]

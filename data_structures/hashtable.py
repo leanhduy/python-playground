@@ -91,3 +91,41 @@ def first_non_repeating_char(s: str) -> Optional[str]:
         if d[k] == 1:
             return k
     return None
+
+
+def group_anagrams(words):
+    """
+    ! INTERVIEW QUESTION !
+    Given a list of words.
+    Return a list of group of anagrams words
+    * BIG-O *
+    sorted() has time complexity of O(n log n)
+    loop has time complexity of O(m)
+    Time complexity = O(m * n log n)
+    """
+    result = {}
+    if len(words) == 0:
+        return []
+    for word in words:
+        canonical = "".join(sorted(word))  # O(n log n), n is the size of the word
+        if result.get(canonical) is None:
+            result[canonical] = [word]
+        else:
+            result[canonical].append(word)
+    return [group for group in result.values()]
+
+
+def two_sum(nums, sum):
+    """
+    ! INTERVIEW QUESTION !
+    Problem: Given an array of integers nums and a target integer target, find the indices of two numbers in the array that add up to the target.
+    """
+    num_map = {}
+    for i, num in enumerate(nums):
+        complement = sum - num
+        if num_map.get(complement) is not None:
+            return [num_map.get(complement), i]
+        else:
+            num_map[num] = i
+    return []
+
