@@ -92,3 +92,11 @@ def test_two_sum():
     assert two_sum([1, 2, 3, 4, 5], 10) == []
     assert two_sum([1, 2, 3, 4, 5], 7) == [2, 3]
     assert two_sum([1, 2, 3, 4, 5], 3) == [0, 1]
+
+
+@pytest.mark.ht
+def test_subarray_sum():
+    assert subarray_sum([1, 2, 3, 4, 5], 9) == [1, 3]
+    assert subarray_sum([-1, 2, 3, -4, 5], 0) == [0, 3]
+    assert subarray_sum([2, 3, 4, 5, 6], 3) == [1, 1]
+    assert subarray_sum([], 0) == []

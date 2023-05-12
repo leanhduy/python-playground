@@ -129,3 +129,24 @@ def two_sum(nums, sum):
             num_map[num] = i
     return []
 
+
+def subarray_sum(nums, target):
+    """
+    ! INTERVIEW QUESTION !
+    Given an array of integers nums and a target integer target, write a function called subarray_sum that finds the indices of a contiguous subarray in nums that add up to the target sum using a hash table (dictionary).
+
+    ? INPUTS ?
+    nums: a list of integers representing the input array
+    target: an integer representing the target sum
+
+    ? OUTPUT ?
+    Your function should return a list of two integers representing the starting and ending indices of the subarray that adds up to the target sum. If there is no such subarray, your function should return an empty list.
+    """
+    sum_index = {0: -1}
+    current_sum = 0
+    for i, num in enumerate(nums):
+        current_sum += num
+        if current_sum - target in sum_index:
+            return [sum_index[current_sum - target] + 1, i]
+        sum_index[current_sum] = i
+    return []
