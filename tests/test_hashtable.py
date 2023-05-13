@@ -100,3 +100,19 @@ def test_subarray_sum():
     assert subarray_sum([-1, 2, 3, -4, 5], 0) == [0, 3]
     assert subarray_sum([2, 3, 4, 5, 6], 3) == [1, 1]
     assert subarray_sum([], 0) == []
+
+
+@pytest.mark.ht
+def test_count_good_pairs():
+    input = [1, 2, 3, 1, 1, 3]
+    assert count_good_pairs(input) == 4
+    input = [1, 1, 1, 1]
+    assert count_good_pairs(input) == 6
+    input = [1, 2, 3]
+    assert count_good_pairs(input) == 0
+
+
+@pytest.mark.ht
+def test_count_smaller_numbers_than_current():
+    input = [8, 1, 2, 2, 3]
+    assert count_smaller_numbers_than_current(input) == [4, 0, 1, 1, 3]

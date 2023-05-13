@@ -150,3 +150,46 @@ def subarray_sum(nums, target):
             return [sum_index[current_sum - target] + 1, i]
         sum_index[current_sum] = i
     return []
+
+
+def count_good_pairs(nums):
+    """
+    Given an array of number
+    Return the number of good pairs in the array
+    A pair (i, j) is a good pair if i < j and nums[i] == nums[j]
+    """
+    index_dict = {}
+    count = 0
+    for i, num in enumerate(nums):
+        if index_dict.get(num) is None:
+            index_dict[num] = [i]
+        else:
+            count += len(index_dict[num])
+            index_dict[num].append(i)
+    return count
+
+
+def count_smaller_numbers_than_current(nums):
+    """
+    * PROBLEM *\n
+    Given array `nums`, for each `nums[i]` find out how many numbers in the array are smaller than it.
+    That is, for each `nums[i]` you have to count the number of valid `j`'s such that `j != i` and `nums[j] < nums[i]`.
+
+    Return the answer in an array.
+
+    ? INPUT ? \n
+    An array of numbers `nums`
+
+    ! CONSTRAINTS !\n
+    2 <= `nums.length` <= 500 \n
+    0 <= `nums[i]` <= 100
+    """
+    temp = sorted(nums)
+    mapping = {}
+    result = []
+    for i in range(len(temp)):
+        if temp[i] not in mapping:
+            mapping[temp[i]] = i
+    for i in range(len(nums)):
+        result.append(mapping[nums[i]])
+    return result
