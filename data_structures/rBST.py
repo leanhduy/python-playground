@@ -82,6 +82,7 @@ class RBST:
         return temp.value
 
     def __r_delete(self, current, value):
+        """Recursively deletes a node from the binary search tree."""
         if current is None:
             return None
         if value < current.value:
@@ -105,17 +106,10 @@ class RBST:
         return current
 
     def r_delete(self, value):
-        if self.root is None or not self.r_contains(value):
-            return
+        """
+        Remove the node with given value so that the tree after removing the node is still a valid Binary Search Tree
+        """
+        if self.root is None:
+            return None
         else:
             self.root = self.__r_delete(self.root, value)
-
-
-t2 = RBST()
-t2.r_insert(21)
-t2.r_insert(10)
-t2.r_insert(47)
-t2.r_insert(5)
-t2.r_insert(3)
-t2.r_insert(4)
-t2.r_delete(10)
