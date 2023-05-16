@@ -256,6 +256,37 @@ class LinkedList:
                 after = after.next
             self.head.next = before
 
+    def bubble_sort(self):
+        """
+        IMPLEMENT BUBBLE SORT ON LINKED LIST WITHOUT USING EXTRA DATA STRUCTURE
+        """
+        if self.length > 1:
+            after = self.tail
+            while after != self.head.next:
+                temp = self.head
+                while temp.next != after:
+                    if temp.value > temp.next.value:
+                        temp.value, temp.next.value = temp.next.value, temp.value
+                    temp = temp.next
+                if temp.value > after.value:
+                    temp.value, after.value = after.value, temp.value
+                after = temp
+
+    def selection_sort(self):
+        if self.length > 1:
+            current = self.head
+            # Iterate the current pointer until it.next is None
+            while current.next is not None:
+                temp = current
+                min = current
+                while temp is not None:
+                    if temp.value < min.value:
+                        min = temp
+                    temp = temp.next
+                # At the end of the inner loop, swap the value of min and current node
+                current.value, min.value = min.value, current.value
+                current = current.next
+
 
 ##### * OTHER LINKED LIST PROBLEMS * (LeetCode) ####
 ##### ! NOTE: Leetcode define the linked list as the head of the list, which is a node with `val` and `next` pointer ! #####

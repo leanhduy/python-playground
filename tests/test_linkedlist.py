@@ -150,6 +150,28 @@ class TestLinkedList:
         ll0.remove_duplicates_without_set()
         assert str(ll0) == "1-2-3-4-5"
 
+    def test_bubble_sort(self):
+        ll = LinkedList()
+        ll.append(4)
+        ll.append(2)
+        ll.append(6)
+        ll.append(5)
+        ll.append(1)
+        ll.append(3)
+        ll.bubble_sort()
+        assert str(ll) == "1-2-3-4-5-6"
+
+    def test_selection_sort(self):
+        ll = LinkedList()
+        ll.append(4)
+        ll.append(2)
+        ll.append(6)
+        ll.append(5)
+        ll.append(1)
+        ll.append(3)
+        ll.selection_sort()
+        assert str(ll) == "1-2-3-4-5-6"
+
 
 @pytest.mark.ll_others
 def test_add_two_numbers():
